@@ -1,0 +1,51 @@
+[project]
+name = ""
+version = ""
+description = ""
+authors = [
+    {name = "Gregor Ehrensperger, Marc Falkensteiner", email = "gregor.ehrensperger@student.uibk.ac.at, marc.falkensteiner@datalabhell.at"},
+]
+dependencies = [
+    "matplotlib>=3.7.4",
+    "pandas>=2.1.0",
+    "jupyterlab>=4.0.9",
+    "ipython>=8.18.1",
+    "numpy>=1.25.2",
+    "plotly>=5.18.0",
+    "scikit-learn>=1.3.2",
+    "inquirer>=3.1.4",
+    "scipy>=1.11.4",
+    "dask>=2023.11.0",
+    "xarray>=2023.11.0",
+    "tqdm>=4.66.1",
+    "h5py>=3.10.0",
+    "basemap>=1.3.8",
+    "basemap-data-hires>=1.3.2",
+    "ipywidgets>=8.1.1",
+    "cartopy>=0.22.0",
+    "multiprocess>=0.70.15",
+    "numdifftools>=0.9.41",
+    "swifter>=1.4.0",
+    "geopandas>=0.14.1",
+    "pyarrow>=14.0.2",
+    "cmasher>=1.9.2",
+]
+requires-python = ">=3.10,<3.11"
+readme = "README.md"
+license = {text = "MIT"}
+
+[tool.ruff]
+select = [
+  "F",  # pyflakes
+  "I",  # isort
+  "UP",  # pyupgrade
+  "E",  # pycodestyle
+  "W",  # warning
+]
+ignore = [
+  # Aim to progressively fix address these codes over time
+  "E501",  # Line too long
+  "E741",  # Ambiguous variable name: `l`
+  "E402",  # Module level import not at top of file
+  "UP032",  # Use f-string instead of `format` call
+]
