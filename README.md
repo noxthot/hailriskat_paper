@@ -6,7 +6,6 @@ Hail Risk Maps for Austria
 ## Setup
 ### Julia
 #### Instantiating the project
-
 Open julia (we currently use the latest patch of `1.11`) inside this folder, then
 
 ```julia
@@ -18,6 +17,8 @@ pkg>instantiate
 This creates a separate environment for the packages for this project and installs the exact versions.
 
 ### Python
+We currently use `Python 3.10`.
+
 #### PDM
 Use `pdm` to install/sync all required modules:
 ```bash
