@@ -5,6 +5,13 @@
 This is the source code belonging to the paper of the same name [[1]](#1).
 
 
+## Authors of this Source Code
+- [Gregor Ehrensperger](https://github.com/noxthot) [![ORCID iD](https://orcid.org/sites/default/files/images/orcid_16x16.png) ORCID: 0000-0003-4816-0233](https://orcid.org/0000-0003-4816-0233)
+
+- [Marc-André Falkensteiner](https://github.com/Falke96) [![ORCID iD](https://orcid.org/sites/default/files/images/orcid_16x16.png) ORCID: 0000-0002-6887-405X](https://orcid.org/0000-0002-6887-405X)
+
+
+
 ## Setup
 ### Julia
 #### Instantiating the project
