@@ -1,6 +1,8 @@
-# HailRiskAT
+# From Radar to Risk: Building a High-Resolution Hail Database for Austria And Estimating Risk Through the Integration of Distributional Neural Networks into the Metastatistical Framework
 
-Hail Risk Maps for Austria
+[![DOI](https://zenodo.org/badge/???ID???.svg)](https://zenodo.org/badge/latestdoi/???ID???)
+
+This is the source code belonging to the paper of the same name [[1]](#1).
 
 
 ## Setup
@@ -38,3 +40,6 @@ To add a package:
 ```bash
 pdm add <PACKAGE_NAME>
 ```
+
+
+<a id="1">[1]</a> Ehrensperger, G., Meyer, V., Falkensteiner, M. & Hell, T. (2025). From Radar to Risk: Building a High-Resolution Hail Database for Austria And Estimating Risk Through the Integration of Distributional Neural Networks into the Metastatistical Framework. tba
