@@ -53,10 +53,6 @@ begin
 	NR_SAMPLES = 300_000  # used for some plots
 	START_YEAR = 2009
 
-	USE_CENSORED_WEIBULL = false
-	CENSORED_LEFT_VALUE = 0.0
-	CENSORED_RIGHT_VALUE = 80.0
-
 	DITHER_DATA = true
 
 	SHOW_PLOTS = false
@@ -118,17 +114,7 @@ begin
 
 	@bind proxies MultiCheckBox(
 					covariables,
-					default=setdiff(
-								covariables,
-								[
-									"ATZIR",
-									"ATRAU",
-									"ATVLG",
-									"ATPAT",
-									"ATFEL",
-									"radar_mean",
-								]
-					)
+					default=covariables,
 	)
 end
 
@@ -191,20 +177,7 @@ end
 # ╔═╡ bf7c7d57-5eb1-4c74-a771-c2c6a7c566e8
 if SHOW_PLOTS
 	weibull_fitted_on_target = fit(Weibull, sampled_target)
-
-	if USE_CENSORED_WEIBULL
-		weibull_fitted_on_target = censored(
-										weibull_fitted_on_target,
-										CENSORED_LEFT_VALUE,
-										CENSORED_RIGHT_VALUE
-		)
-	end
-
 	sampled_target_plot = sampled_target
-
-	if USE_CENSORED_WEIBULL
-		clamp!(sampled_target_plot, CENSORED_LEFT_VALUE, CENSORED_RIGHT_VALUE)
-	end
 
 	sort!(sampled_target_plot)
 
@@ -368,32 +341,6 @@ begin
 		for k in keys(target_counter)
 			target_weights[k] = itp(k)
 		end
-	elseif WEIGHTING_METHOD == :sera
-		# As described in Ribeiro, R.P., Moniz, N.
-		# Imbalanced regression and extreme value prediction.
-		# Mach Learn 109, 1803–1835 (2020).
-		# https://doi.org/10.1007/s10994-020-05900-9
-
-		# TODO: only working for one specific set
-		if (data_dir != "dataparquet_2024_01_03") || (sel_target != "data_mehs_orig")
-			error("not implemented")
-		end
-
-		local df_sigma = CSV.read(
-							joinpath(
-								"..",
-								"..",
-								"..",
-								"hailriskat_diag",
-								"images",
-								"sigma_with_idx.csv"
-							),
-							DataFrame
-		)
-
-		for (idx, k) in enumerate(df_transformed.target)
-			target_weights[k] = df_sigma[idx, :sigma]
-		end
 	end
 end;
 
@@ -436,12 +383,6 @@ begin
 				m_out[SHAPE_INDEX, :],
 				m_out[SCALE_INDEX, :]
 		)
-
-		if USE_CENSORED_WEIBULL
-			return censored.(wb, CENSORED_LEFT_VALUE, CENSORED_RIGHT_VALUE)
-		else
-			return wb
-		end
 	end
 
 
@@ -488,7 +429,7 @@ if training_start
 		model_settings = Dict(
 			:activation_function => String(Symbol(ACTIVATION_FUNCTION)),
 			:batchsize => BATCHSIZE,
-			:censored_weibull => USE_CENSORED_WEIBULL,
+			:censored_weibull => false,
 			:databundle => data_dir,
 			:early_stopping_patience => 20,
 			:nodes_per_layer => 32,
