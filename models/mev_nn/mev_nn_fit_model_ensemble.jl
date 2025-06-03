@@ -363,9 +363,7 @@ end;
 
 # ╔═╡ 9384c81c-51cf-4391-8fa4-5d9d008a1511
 begin
-    # TODO: should be loglike_weighted instead of loglike_wb, since it works for any
-    #       distribution
-	function loglike_wb(ŷ, y, agg)
+	function loglike_weighted(ŷ, y, agg)
 		@assert(size(ŷ) == size(y))
 
 		weight = getindex.(Ref(target_weights), y)
@@ -376,7 +374,7 @@ begin
 	end
 
 
-	loss(model, x, y; agg=mean) = loglike_wb(distwb(model(x)), y, agg)
+	loss(model, x, y; agg=mean) = loglike_weighted(distwb(model(x)), y, agg)
 
 	distwb(m_out) = let
 		wb = Weibull.(
