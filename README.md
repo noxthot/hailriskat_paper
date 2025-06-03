@@ -62,19 +62,27 @@ The code is organized like this:
 ### How to
 #### Prepare data and data preprocessing
 - Provide the raw data (ALDIS, ERA5, INCA, radar) in the `./data/raw_data/` folder.
-- Run `etl.py` (Python) to process the data and store it in `./data/processed_data/`.
+- Run `etl.py` (Python; uses `./etl_pipelines/`) to process the data and store it in `./data/processed_data/`.
 
 #### Calculate return levels
-##### Pointwise metastatistical model
-- Run `./models/mev_pointwise/mev_pointwise.py` (Python) to fit the pointwise metastatistical model, calculate the return levels and plot the results.
-
 ##### Spatio-temporal metastatistical model
-- Run `./models/mev_nn/mev_nn_fit_model.jl` (Julia) to fit the distributional neural network.
-- Run `./models/mev_nn/mev_nn_calculate_return_levels.jl` (Julia) to calculate the return levels using the fitted distributional neural network.
+- Within Julia REPL, start Pluto:
+```julia
+using Pluto
+Pluto.run()
+```
+
+- Open and run `./models/mev_nn/mev_nn_fit_model.jl` (Julia) to fit the distributional neural network.
+- Open and run `./models/mev_nn/mev_nn_calculate_return_levels.jl` (Julia) to calculate the return levels using the fitted distributional neural network.
 
 ##### Ensemble of spatio-temporal metastatistical models
-- Run `./models/mev_nn/mev_nn_fit_model_ensemble.jl` (Julia) to fit an ensemble of distributional neural networks.
-- Run `./models/mev_nn/mev_nn_calculate_return_levels_ensemble.jl` (Julia) to calculate the return levels using the ensemble of fitted distributional neural networks.
+- Within Julia REPL, start Pluto:
+```julia
+using Pluto
+Pluto.run()
+```
+- Open and run `./models/mev_nn/mev_nn_fit_model_ensemble.jl` (Julia) to fit an ensemble of distributional neural networks.
+- Open and run `./models/mev_nn/mev_nn_calculate_return_levels_ensemble.jl` (Julia) to calculate the return levels using the ensemble of fitted distributional neural networks.
 
 ** Note: this is what is used within the paper **
 
