@@ -330,8 +330,7 @@ begin
 			# push the lowest weighting whenever the next hailsize is reached
 			if hs != xs[end]
 				push!(xs, hs)
-				push!(ys, max(MIN_WEIGHT, perc / 100))  # TODO: Try to not push the lowest,
-                                                        #       but the highest weighting
+				push!(ys, max(MIN_WEIGHT, perc / 100))
 			end
 		end
 
