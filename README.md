@@ -55,7 +55,6 @@ The code is organized like this:
 - `./era5_retrieval/`: Contains code to retrieve cape from ERA5.
 - `./etl_pipelines/`: Reads ALDIS, INCA, radar and ERA5 data, processes it by bringing it to the same 1km x 1km grid scale and stores the transformed data in `./data/processed_data`.
 - `./models/mev_nn/`: Contains the code to fit the distributional neural networks (DNNs) and calculate the return levels using the spatio-temporal metastatistical framework.
-- `./models/mev_pointwise/`: Contains the code to compute the return levels by applying the metastatistical model separately on each grid point.
 - `./notebooks/`: Contains the Jupyter notebooks used to generate the figures of the paper.
 - `./utils/`: Contains utility functions used in the code.
 
