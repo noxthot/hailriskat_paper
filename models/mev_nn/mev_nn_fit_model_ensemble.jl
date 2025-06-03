@@ -50,6 +50,7 @@ begin
 
 	VAL_TEST_YEARS = [2010, 2020]  # only if VAL_TEST_MODE == :year
 
+	NR_ENSEMBLE_MODELS = 50
 	NR_SAMPLES = 300_000  # used for some plots
 	START_YEAR = 2009
 
@@ -408,7 +409,7 @@ $(@bind training_start CheckBox())
 
 # ╔═╡ 223f2258-ed7f-4c97-9245-0592170e99bf
 if training_start
-	for _ in 1:50
+	for _ in 1:NR_ENSEMBLE_MODELS
 		init_strategy = Flux.kaiming_uniform
 	    device = cpu
 
