@@ -260,10 +260,8 @@ class ETL_GEOSPHERE:
 
         print("Merging transformed dataframes", flush=True)
 
-        joined_df = (
-            df_inca.merge(df_cape, on=["lon", "lat", "date"])
-            .merge(df_aldis, on=["lon", "lat", "date"])
-        )
+        joined_df = df_inca.merge(df_cape, on=["lon", "lat", "date"]) \
+                           .merge(df_aldis, on=["lon", "lat", "date"])
 
         print("WRITING TO PARQUET", flush=True)
         joined_df.to_parquet(
