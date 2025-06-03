@@ -14,7 +14,7 @@ This is the source code belonging to the paper of the same name [[1]](#1).
 ## Setup
 ### Julia
 #### Instantiating the project
-Open julia (we currently use the latest patch of `1.11`) inside this folder, then
+Open julia (we currently use `1.10`) inside this folder, then
 
 ```julia
 pkg>activate .  # use ']' to open the Pkg REPL
