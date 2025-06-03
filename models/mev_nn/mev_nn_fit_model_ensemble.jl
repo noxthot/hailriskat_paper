@@ -34,10 +34,8 @@ begin
 	using Serialization
 	using SpecialFunctions
 	using StatsBase
+	using StatsPlots
 end
-
-# ╔═╡ 8b3e6be3-5207-4be5-95b7-ba0c6e503e62
-using StatsPlots;
 
 # ╔═╡ 5ad3233f-bfaa-46aa-8a0d-4225af637b4e
 begin
@@ -3028,7 +3026,6 @@ version = "1.8.1+0"
 
 # ╔═╡ Cell order:
 # ╠═21b0c246-addf-11ed-174a-419039e1de0f
-# ╠═8b3e6be3-5207-4be5-95b7-ba0c6e503e62
 # ╠═5ad3233f-bfaa-46aa-8a0d-4225af637b4e
 # ╠═f1fcced2-f2d5-4b76-8ec4-be1c0cd39dae
 # ╠═fa38c616-ea99-4f42-beb4-bf098ee9d804
