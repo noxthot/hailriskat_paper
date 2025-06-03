@@ -1453,7 +1453,9 @@ version = "0.12.3"
 
 [[deps.Parquet]]
 deps = ["CategoricalArrays", "CodecZlib", "CodecZstd", "DataAPI", "Dates", "Decimals", "LittleEndianBase128", "Missings", "Mmap", "SentinelArrays", "Snappy", "Tables", "Thrift"]
-git-tree-sha1 = "9710bed2527030fe0e0b9a455595259c6b398556"
+git-tree-sha1 = "de3f6f0bac7cb43a05495a5b52fe022ef9bcb666"
+repo-rev = "master"
+repo-url = "git@github.com:noxthot/Parquet.jl.git"
 uuid = "626c502c-15b0-58ad-a749-f091afb673ae"
 version = "0.8.5"
 
