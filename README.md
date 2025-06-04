@@ -60,11 +60,11 @@ The code is organized like this:
 
 
 ### How to
-#### Prepare data and data preprocessing
+#### Prepare data and data preprocessing (1)
 - Provide the raw data (ALDIS, ERA5, INCA, radar) in the `./data/raw_data/` folder.
 - Run `etl.py` (Python; uses `./etl_pipelines/`) to process the data and store it in `./data/processed_data/`.
 
-#### Calculate return levels
+#### Calculate return levels (2)
 - Within Julia REPL, start Pluto:
 ```julia
 using Pluto
