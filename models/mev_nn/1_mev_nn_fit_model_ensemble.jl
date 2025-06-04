@@ -89,7 +89,7 @@ end;
 begin
 	path_processed = joinpath(joinpath("..", "..", "data", "processed_data"))
 
-	local choices = filter(startswith("dataparquet"), readdir(joinpath(path_processed)))
+	local choices = filter(startswith("dataparquet"), 		   readdir(joinpath(path_processed)))
 	sort!(choices, rev=true)
 
 	@bind data_dir Select(choices)
