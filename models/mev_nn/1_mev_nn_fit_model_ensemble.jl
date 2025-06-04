@@ -209,6 +209,8 @@ if export_data
 	local loc_columns = [:x, :y]
 	local df_full = df_raw[:, vcat(loc_columns, [:lat, :lon])]
 
+	mkpath(output_path)
+
 	df_full.target = df_raw[:, Symbol(sel_target)]
 
     df_full.target_dithered = map(
