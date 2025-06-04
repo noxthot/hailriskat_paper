@@ -216,6 +216,11 @@ if export_data
 
 	df_full.target = df_raw[:, Symbol(sel_target)]
 
+    df_full.target_dithered = map(
+                                    x -> rand(Uniform(-0.5, 0.5)) + x,
+                                    df_full.target
+    )
+
 	df_full.vdate = Dates.Date.(Dates.unix2datetime.(df_raw.timestamp))
 	df_full.year = Dates.value.(Dates.Year.(df_full.vdate))
 
