@@ -92,9 +92,13 @@ The code is organized like this:
 - `./era5_retrieval/`: Contains code to retrieve cape from ERA5.
 - `./etl_pipelines/`: Reads ALDIS, INCA, radar and ERA5 data, processes it by bringing it to the same 1km x 1km grid scale and stores the transformed data in `./data/processed_data`.
 - `./models/mev_nn/`: Contains the code to fit the distributional neural networks (DNNs) and calculate the return levels using the spatio-temporal metastatistical framework.
-- `./notebooks/`: Contains the Jupyter notebooks used to generate the figures of the paper.
+- `./notebooks/`: Contains the Jupyter notebooks used to generate most of the figures of the paper.
 - `./utils/`: Contains utility functions used in the code.
+- `etl.py`: The main entry point for the ETL (Extract, Transform, Load) process to prepare the data.
+- `gof.R`: Contains the code related to goodness-of-fit tests and diagnostic plots.
 
+To summarize: Python is used for data preprocessing and plotting the resulting maps.
+The metastatistical framework with its distributional neural network core is implemented in Julia, and R is used for goodness-of-fit tests and diagnostic plots regarding the choice of distribution describing the ordinary events (hailstone sizes).
 
 ### How to
 #### Prepare data and data preprocessing (1)
