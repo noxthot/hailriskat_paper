@@ -1,0 +1,4 @@
+Type: project
+Description: hailriskat
+Depends:
+    fitdistrplus,
