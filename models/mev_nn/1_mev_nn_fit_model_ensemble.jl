@@ -230,7 +230,7 @@ if export_data
 
 	mapcols!(ByRow(Float32), df_full; cols=[:target])
 
-    CSV.write("data_full.csv", df_full)
+    CSV.write(joinpath("..", "..", "data", "gof_data", "data_full.csv"), df_full)
 
 	df_full
 end
