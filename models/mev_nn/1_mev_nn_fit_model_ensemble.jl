@@ -155,19 +155,21 @@ begin
 
 	filter!(x -> x.target > 0, df_transformed)
 
+    if DITHER_DATA
+        df_transformed.target = map(
+                                    x -> rand(Uniform(-0.5, 0.5)) + x,
+                                    df_transformed.target
+        )
+
+        filter!(x -> x.target > 0, df_transformed)
+    end
+
 	mapcols!(ByRow(Float32), df_transformed)
 end;
 
 # ╔═╡ c350c528-7454-44cb-9741-c7f0996757ad
 if SHOW_PLOTS
 	sampled_target = sample(df_transformed.target, NR_SAMPLES)
-
-	if DITHER_DATA
-		sampled_target = map(
-									x -> rand(Uniform(-0.5, 0.5)) + x,
-									sampled_target
-		)
-	end
 
 	local min_sample = Int(floor(minimum(sampled_target)))
 	local max_sample = Int(ceil(maximum(sampled_target)))
@@ -433,10 +435,10 @@ if training_start
 			:nodes_per_layer => 32,
 			:nr_epochs => 5000,
 			:nr_hidden_layers => 6,
-			:num_covariables => (ncol(df_transformed) - 1),
+			:num_covariables => (ncol(df_transformed) - 2),
 			:start_year => START_YEAR,
 			:target_var => sel_target,
-			:traincols => setdiff(names(df_transformed), ["target"]),
+			:traincols => setdiff(names(df_transformed), ["target", "target_dith"]),
 			:val_test_mode => VAL_TEST_MODE,
 			:weighting_method => WEIGHTING_METHOD,
 			:comment => COMMENT_MODEL,
