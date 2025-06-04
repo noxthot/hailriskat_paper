@@ -47,11 +47,6 @@ end
 # ╔═╡ 844901f1-2e52-4860-89f6-38eab3ef4277
 path_processed = joinpath("..", "..", "data", "models", "mev_nn", "final_ensemble")
 
-# ╔═╡ 1b32228d-0ab4-4344-9f49-b7f7e7d9524c
-md"""
-## Load data
-"""
-
 # ╔═╡ be525da3-5ae5-4156-8ef6-2a81ae40cb59
 md"""
 ## Compute parameters
