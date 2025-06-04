@@ -58,14 +58,8 @@ begin
 
 	SHOW_PLOTS = false
 
-    SAVE_PATH = joinpath(
-                            "..",
-                            "..",
-                            "data",
-                            "models",
-                            "mev_nn",
-                            "final_ensemble",
-    )
+	DATA_PATH = joinpath("..", "..", "data")
+    SAVE_PATH = joinpath(DATA_PATH, "models", "mev_nn", "final_ensemble")
 end;
 
 # ╔═╡ f1fcced2-f2d5-4b76-8ec4-be1c0cd39dae
@@ -87,7 +81,7 @@ end;
 
 # ╔═╡ 8e5ef128-405a-4220-bb35-fd2077ee8eb2
 begin
-	path_processed = joinpath(joinpath("..", "..", "data", "processed_data"))
+	path_processed = joinpath(DATA_PATH, "processed_data")
 
 	local choices = filter(startswith("dataparquet"), readdir(joinpath(path_processed)))
 	sort!(choices, rev=true)
@@ -211,6 +205,7 @@ end
 
 # ╔═╡ f89212ef-d632-47ea-a5e6-a1e2bb94fc76
 if export_data
+	local output_path = joinpath(DATA_PATH, "gof_data")
 	local loc_columns = [:x, :y]
 	local df_full = df_raw[:, vcat(loc_columns, [:lat, :lon])]
 
@@ -230,7 +225,7 @@ if export_data
 
 	mapcols!(ByRow(Float32), df_full; cols=[:target])
 
-    CSV.write(joinpath("..", "..", "data", "gof_data", "data_full.csv"), df_full)
+    CSV.write(joinpath(output_path, "data_full.csv"), df_full)
 
 	df_full
 end
