@@ -70,8 +70,8 @@ The code is organized like this:
 using Pluto
 Pluto.run()
 ```
-- Open and run `./models/mev_nn/mev_nn_fit_model_ensemble.jl` (Julia) to fit an ensemble of distributional neural networks.
-- Open and run `./models/mev_nn/mev_nn_calculate_return_levels_ensemble.jl` (Julia) to calculate the return levels using the metastatistical approach with an ensemble of fitted distributional neural networks in its core.
+- Open and run `./models/mev_nn/1_mev_nn_fit_model_ensemble.jl` (Julia) to fit an ensemble of distributional neural networks.
+- Open and run `./models/mev_nn/2a_mev_nn_calculate_return_levels_ensemble.jl` (Julia) to calculate the return levels using the metastatistical approach with an ensemble of fitted distributional neural networks in its core.
 
 #### Generate figures used in the paper
 Prerequisites: Preprocessed data (1) and computed return levels (2) are available (see steps above).
