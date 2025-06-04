@@ -65,38 +65,25 @@ The code is organized like this:
 - Run `etl.py` (Python; uses `./etl_pipelines/`) to process the data and store it in `./data/processed_data/`.
 
 #### Calculate return levels
-##### Spatio-temporal metastatistical model
-- Within Julia REPL, start Pluto:
-```julia
-using Pluto
-Pluto.run()
-```
-
-- Open and run `./models/mev_nn/mev_nn_fit_model.jl` (Julia) to fit the distributional neural network.
-- Open and run `./models/mev_nn/mev_nn_calculate_return_levels.jl` (Julia) to calculate the return levels using the fitted distributional neural network.
-
-##### Ensemble of spatio-temporal metastatistical models
 - Within Julia REPL, start Pluto:
 ```julia
 using Pluto
 Pluto.run()
 ```
 - Open and run `./models/mev_nn/mev_nn_fit_model_ensemble.jl` (Julia) to fit an ensemble of distributional neural networks.
-- Open and run `./models/mev_nn/mev_nn_calculate_return_levels_ensemble.jl` (Julia) to calculate the return levels using the ensemble of fitted distributional neural networks.
+- Open and run `./models/mev_nn/mev_nn_calculate_return_levels_ensemble.jl` (Julia) to calculate the return levels using the metastatistical approach with an ensemble of fitted distributional neural networks in its core.
 
-** Note: this is what is used within the paper **
-
-#### Generate paper figures
-Prerequisites: Preprocessed data and computed return levels are available (see steps above).
-- Figure 4 (maximum observed hail stone): tba
-- Figure 5 (hailstone size frequency): Run Notebook `./notebooks/empirical_mehs_return_levels.ipynb` (Python) using Jupyter.
-- Figure 6 (return levels of hailstone sizes as estimated by the TMEV approach using bootstrapping on the ensemble): tba
-- Figure 7 (return periods of hailstone sizes as estimated by the TMEV approach using bootstrapping on the ensemble): tba
-- Figure 8 (empirical hailstone size return levels): tba
-- Appendix Figure 1 (qq plot): tba
-- Appendix Figure 2 (diagnostic plots using Weibull on raw data): tba
-- Appendix Figure 3 (diagnostic plots using Weibull on dithered data): tba 
-- Appendix Figure 5 (number of observed hail days): Run Notebook `./notebooks/haildays.ipynb` (Python) using Jupyter.
+#### Generate figures used in the paper
+Prerequisites: Preprocessed data (1) and computed return levels (2) are available (see steps above).
+- Figure 4 (maximum observed hailstone size; requires (1)): Run Notebook `./notebooks/hail_eda.ipynb` (Python) using Jupyter.
+- Figure 5 (hailstone size frequency; requires (1)): Run Notebook `./notebooks/hail_eda.ipynb` (Python) using Jupyter.
+- Figure 6 (return levels of hailstone sizes as estimated by the TMEV approach using bootstrapping on the ensemble; requires (2)): tba
+- Figure 7 (return periods of hailstone sizes as estimated by the TMEV approach using bootstrapping on the ensemble; requires (2)): tba
+- Figure 8 (empirical hailstone size return levels; requires (1)): Run Notebook `./notebooks/hail_eda.ipynb` (Python) using Jupyter.
+- Appendix Figure 1 (qq plot; requires (1)): tba
+- Appendix Figure 2 (diagnostic plots using Weibull on raw data; requires (1)): tba
+- Appendix Figure 3 (diagnostic plots using Weibull on dithered data; requires (1)): tba 
+- Appendix Figure 5 (number of observed hail days; requires (1)): Run Notebook `./notebooks/hail_eda.ipynb` (Python) using Jupyter.
 
 
 ## References
