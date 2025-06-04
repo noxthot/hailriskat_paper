@@ -116,7 +116,7 @@ md"""
 """
 
 # ╔═╡ e10b0a8e-d579-4f95-a2c6-cef039888188
-sel_returnlevel = @bind returnyear_mul MultiSelect([[2, 3]; 5:5:100], default=[2, 5, 10, 20, 30, 50]);
+sel_returnlevel = @bind returnyear_mul MultiSelect([[2, 3]; 5:5:100], default=[10, 20, 30]);
 
 # ╔═╡ bcb3b2a9-f6eb-434f-87dc-47789d290e09
 if calculation_start
