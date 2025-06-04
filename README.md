@@ -47,6 +47,43 @@ To add a package:
 pdm add <PACKAGE_NAME>
 ```
 
+
+### R
+#### rig
+We use [rig](https://github.com/r-lib/rig) to manage the R version.
+
+To install `rig` on Ubuntu:
+```bash
+curl -Ls https://github.com/r-lib/rig/releases/download/latest/rig-linux-latest.tar.gz |
+  sudo tar xz -C /usr/local
+```
+
+We are working with `4.5.0`, so we add this version:
+```bash
+rig add 4.5.0
+```
+
+Launch this specific version with:
+```bash
+R-4.5.0
+```
+
+#### renv
+Use renv to install all required R modules from `renv.lock`: 
+```r
+renv::restore()
+```
+
+After manually adding a package (by updating `DESCRIPTION`), update the `renv.lock` using this command:
+```r
+renv::init() 
+```
+and choosing
+```
+2: Discard the lockfile and re-initialize the project.
+```
+
+
 ## Documentation
 ### Overview
 This repository contains the source code for the paper [[1]](#1) which is used to calculate the hail risk in Austria and to generate the figures of the paper.
