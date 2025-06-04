@@ -57,6 +57,15 @@ begin
 	DITHER_DATA = true
 
 	SHOW_PLOTS = false
+
+    SAVE_PATH = joinpath(
+                            "..",
+                            "..",
+                            "data",
+                            "models",
+                            "mev_nn",
+                            "final_ensemble",
+    )
 end;
 
 # ╔═╡ f1fcced2-f2d5-4b76-8ec4-be1c0cd39dae
@@ -415,12 +424,7 @@ if training_start
 	    @info "Training on CPU"
 
 		save_path = joinpath(
-						"..",
-						"..",
-						"data",
-						"models",
-						"mev_nn",
-						"final_ensemble",
+						SAVE_PATH,
 						"$(Dates.format(now(), "yyyy-mm-ddTHH-MM-SS"))",
 		)
 
