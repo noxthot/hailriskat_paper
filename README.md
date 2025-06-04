@@ -77,11 +77,11 @@ Pluto.run()
 
 #### Generate figures used in the paper
 Prerequisites: Preprocessed data (1) and computed return levels (2) are available (see steps above).
-- Figure 4 (maximum observed hailstone size; requires (1)): Run Notebook `./notebooks/hail_eda.ipynb` (Python) using Jupyter.
-- Figure 5 (hailstone size frequency; requires (1)): Run Notebook `./notebooks/hail_eda.ipynb` (Python) using Jupyter.
-- Figure 6 (return levels of hailstone sizes as estimated by the TMEV approach using bootstrapping on the ensemble; requires (2)): tba
-- Figure 7 (return periods of hailstone sizes as estimated by the TMEV approach using bootstrapping on the ensemble; requires (2)): tba
-- Figure 8 (empirical hailstone size return levels; requires (1)): Run Notebook `./notebooks/hail_eda.ipynb` (Python) using Jupyter.
+- Figure 4 (maximum observed hailstone size; requires (1)): Run notebook `./notebooks/hail_eda.ipynb` (Python) using Jupyter.
+- Figure 5 (hailstone size frequency; requires (1)): Run notebook `./notebooks/hail_eda.ipynb` (Python) using Jupyter.
+- Figure 6 (return levels of hailstone sizes as estimated by the TMEV approach using bootstrapping on the ensemble; requires (2)): Run notebook `./notebooks/mev_nn_plot_return_levels_ensemble.ipynb` (Python) using Jupyter.
+- Figure 7 (return periods of hailstone sizes as estimated by the TMEV approach using bootstrapping on the ensemble; requires (2)): Run notebook `./notebooks/mev_nn_plot_return_levels_ensemble.ipynb` (Python) using Jupyter.
+- Figure 8 (empirical hailstone size return levels; requires (1)): Run notebook `./notebooks/hail_eda.ipynb` (Python) using Jupyter.
 - Appendix Figure 1 (qq plot; requires (1)): tba
 - Appendix Figure 2 (diagnostic plots using Weibull on raw data; requires (1)): tba
 - Appendix Figure 3 (diagnostic plots using Weibull on dithered data; requires (1)): tba 
