@@ -128,10 +128,10 @@ Prerequisites: Preprocessed data (1) and computed return levels (2) are availabl
 - Figure 6 (return levels of hailstone sizes as estimated by the TMEV approach using bootstrapping on the ensemble; requires (2)): Run notebook `./notebooks/mev_nn_plot_return_levels_ensemble.ipynb` (Python) using Jupyter.
 - Figure 7 (return periods of hailstone sizes as estimated by the TMEV approach using bootstrapping on the ensemble; requires (2)): Run notebook `./notebooks/mev_nn_plot_return_levels_ensemble.ipynb` (Python) using Jupyter.
 - Figure 8 (empirical hailstone size return levels; requires (1)): Run notebook `./notebooks/hail_eda.ipynb` (Python) using Jupyter.
-- Appendix Figure 1 (qq plot; requires (3)): Run `./gof.R` (R).
-- Appendix Figure 2 (diagnostic plots using Weibull on raw data; requires (3)): Run `./gof.R` (R).
-- Appendix Figure 3 (diagnostic plots using Weibull on dithered data; requires (3)): Run `./gof.R` (R). 
-- Appendix Figure 5 (number of observed hail days; requires (3)): Run Notebook `./notebooks/hail_eda.ipynb` (Python) using Jupyter.
+- Figure A.1 (qq plot; requires (3)): Run `./gof.R` (R).
+- Figure A.2 (diagnostic plots using Weibull on raw data; requires (3)): Run `./gof.R` (R).
+- Figure A.3 (diagnostic plots using Weibull on dithered data; requires (3)): Run `./gof.R` (R). 
+- Figure B.5 (number of observed hail days; requires (3)): Run Notebook `./notebooks/hail_eda.ipynb` (Python) using Jupyter.
 
 
 ## References
