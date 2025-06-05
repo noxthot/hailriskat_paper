@@ -1,6 +1,6 @@
 # From Radar to Risk: Building a High-Resolution Hail Database for Austria And Estimating Risk Through the Integration of Distributional Neural Networks into the Metastatistical Framework
 
-[![DOI](https://zenodo.org/badge/???ID???.svg)](https://zenodo.org/badge/latestdoi/???ID???)
+[![DOI](https://zenodo.org/badge/993841796.svg)](https://zenodo.org/badge/latestdoi/993841796)
 
 This is the source code belonging to the paper of the same name [[1]](#1).
 
