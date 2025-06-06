@@ -131,7 +131,7 @@ Prerequisites: Preprocessed data (1) and computed return levels (2) are availabl
 - Figure A.1 (qq plot; requires (3)): Run `./gof.R` (R).
 - Figure A.2 (diagnostic plots using Weibull on raw data; requires (3)): Run `./gof.R` (R).
 - Figure A.3 (diagnostic plots using Weibull on dithered data; requires (3)): Run `./gof.R` (R). 
-- Figure B.5 (number of observed hail days; requires (3)): Run Notebook `./notebooks/hail_eda.ipynb` (Python) using Jupyter.
+- Figure B.2 (number of observed hail days; requires (3)): Run Notebook `./notebooks/hail_eda.ipynb` (Python) using Jupyter.
 
 
 ## References
