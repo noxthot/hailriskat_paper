@@ -95,6 +95,7 @@ The code is organized like this:
 - `./notebooks/`: Contains the Jupyter notebooks used to generate most of the figures of the paper.
 - `./utils/`: Contains utility functions used in the code.
 - `etl.py`: The main entry point for the ETL (Extract, Transform, Load) process to prepare the data.
+- `plot_quality_maps.py`: Contains the code to plot the various quality indices maps (only plotting functionalities, no data processing, so not further described).
 - `gof.R`: Contains the code related to goodness-of-fit tests and diagnostic plots.
 
 To summarize: Python is used for data preprocessing and plotting the resulting maps.
@@ -115,7 +116,6 @@ Pluto.run()
 - Open and run `./models/mev_nn/2a_mev_nn_calculate_return_levels_ensemble.jl` (Julia) to calculate the return levels using the metastatistical approach with an ensemble of fitted distributional neural networks in its core.
 - Open and run `./models/mev_nn/2b_mev_nn_calculate_return_periods_ensemble.jl` (Julia) to calculate the return periods using the metastatistical approach with an ensemble of fitted distributional neural networks in its core.
 - Open and run `./models/mev_nn/3_bootstrap.jl` (Julia) to bootstrap the resulting return levels and periods of the ensemble model.
-
 
 #### Generate data set for goodness-of-fit tests (3)
 This step is a bit hacky since it would make more sense to simply also use (1) directly; however, this was implemented faster.
