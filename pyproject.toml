@@ -1,6 +1,6 @@
 [project]
-name = ""
-version = ""
+name = "HailRiskAT"
+version = "1.0.0"
 description = ""
 authors = [
     {name = "Gregor Ehrensperger, Marc Falkensteiner", email = "gregor.ehrensperger@student.uibk.ac.at, marc.falkensteiner@datalabhell.at"},

@@ -27,24 +27,24 @@ This creates a separate environment for the packages for this project and instal
 ### Python
 We currently use `Python 3.10`.
 
-#### PDM
-Use `pdm` to install/sync all required modules:
+#### uv
+Use `uv` to install/sync all required modules:
 ```bash
-pdm sync
+uv sync
 ```
 
 To run code / `IPython` / `jupyter lab` in this environment:
 ```bash
-pdm run python <SCRIPT.py>
+uv run python <SCRIPT.py>
 
-pdm run ipython
+uv run ipython
 
-pdm run jupyter lab
+uv run jupyter lab
 ```
 
 To add a package:
 ```bash
-pdm add <PACKAGE_NAME>
+uv add <PACKAGE_NAME>
 ```
 
 
