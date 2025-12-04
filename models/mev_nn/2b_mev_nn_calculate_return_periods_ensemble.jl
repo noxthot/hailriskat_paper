@@ -171,7 +171,7 @@ if calculation_start
 							hsbroadcast,
 							threads=true
 			)
-			
+
 			rename!(return_years, :laenge => :lon, :breite => :lat, :x1 => :years)
 
 			CSV.write(
