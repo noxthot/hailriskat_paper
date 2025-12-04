@@ -28,6 +28,7 @@ FILE_PLOT_SETTINGS = {
         "filename": "f01",
         "label": "height (m)",
         "show_radar": True,
+        "strong_countryborders": True,
         "vmax": 5000,
         "vmin": 0,
     },
@@ -40,6 +41,7 @@ FILE_PLOT_SETTINGS = {
         "filename": "fappxB01a",
         "label": "quality",
         "show_radar": True,
+        "strong_countryborders": False,
         "vmax": 1,
         "vmin": 0,
     },
@@ -52,6 +54,7 @@ FILE_PLOT_SETTINGS = {
         "filename": "fappxB01c",
         "label": "quality",
         "show_radar": True,
+        "strong_countryborders": False,
         "vmax": 1,
         "vmin": 0,
     },
@@ -64,6 +67,7 @@ FILE_PLOT_SETTINGS = {
         "filename": "fappxB01b",
         "label": "quality",
         "show_radar": True,
+        "strong_countryborders": False,
         "vmax": 1,
         "vmin": 0,
     },
@@ -76,6 +80,7 @@ FILE_PLOT_SETTINGS = {
         "filename": "fappxB01d",
         "label": "quality",
         "show_radar": True,
+        "strong_countryborders": False,
         "vmax": 1,
         "vmin": 0,
     },
@@ -88,6 +93,7 @@ FILE_PLOT_SETTINGS = {
         "filename": "fappxB03",
         "label": "quality",
         "show_radar": False,
+        "strong_countryborders": False,
         "vmax": 1,
         "vmin": 0,
     },
@@ -100,6 +106,7 @@ FILE_PLOT_SETTINGS = {
         "filename": "f02",
         "label": "quality",
         "show_radar": False,
+        "strong_countryborders": True,
         "vmax": 5,
         "vmin": 1,
     },
@@ -118,6 +125,7 @@ def plot_map(data_map, input_filename, fn_save, file_plot_settings, bgmap=None, 
     label = file_plot_settings.get(input_filename, {}).get("label", None)
     plot_type = file_plot_settings.get(input_filename, {}).get("figure_category", PLOT_CATEGORY.TWO_COLUMNS_ONE_PLOT)
     show_radar = file_plot_settings.get(input_filename, {}).get("show_radar", False)
+    strong_borders = file_plot_settings.get(input_filename, {}).get("strong_countryborders", False)
     vmax = file_plot_settings.get(input_filename, {}).get("vmax", None)
     vmin = file_plot_settings.get(input_filename, {}).get("vmin", None)
     
@@ -165,6 +173,13 @@ def plot_map(data_map, input_filename, fn_save, file_plot_settings, bgmap=None, 
 
     if show_radar and (fgmap is not None):
         ax.imshow(fgmap, extent=[0, data_map.shape[1], 0, data_map.shape[0]], interpolation='gaussian', origin='upper', zorder=10)
+
+    if strong_borders:
+        fgmapcontours = mplimg.imread(os.path.join(PATH_QUALITYMAPS_INPUT, "fg_ATNT_contours.png"))
+        mask = fgmapcontours[..., 3] > 0
+        fgmapcontours[mask, :3] = 0.1
+
+        ax.imshow(fgmapcontours, extent=[0, data_map.shape[1], 0, data_map.shape[0]], interpolation='gaussian', origin='upper', zorder=20)
 
     print('Save %s' %(fn_save), flush=True)
     plt.savefig(f"{fn_save}.png", bbox_inches='tight', dpi=DPI)
