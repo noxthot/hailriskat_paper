@@ -4,13 +4,23 @@ using Statistics
 
 
 function bootstrap_statistics(data::Vector{Float64})
+    qs = [0.01, 0.05, 0.10, 0.25, 0.50, 0.75, 0.90, 0.95, 0.99]
+    quantile_vals = Statistics.quantile(data, qs)
     std1_val = std(data)
 
     return Dict(
+        "q01" => quantile_vals[1],
+        "q05" => quantile_vals[2],
+        "q10" => quantile_vals[3],
+        "q25" => quantile_vals[4],
+        "q75" => quantile_vals[6],
+        "q90" => quantile_vals[7],
+        "q95" => quantile_vals[8],
+        "q99" => quantile_vals[9],
         "mean" => mean(data),
-        "median" => median(data),
-        "std1" => std1_val,
-        "std2" => 2 * std1_val,
+        "median" => quantile_vals[5],
+        "90p_conf_band" => quantile_vals[8] - quantile_vals[2],
+        "98p_conf_band" => quantile_vals[9] - quantile_vals[1],
     )
 end
 
@@ -49,40 +59,41 @@ function retrieve_data(ensemble_path::String, csv_filename::String, target_col_n
 end
 
 
+
+
 function bootstrap(data::Dict{Tuple{Float64, Float64}, Vector{Float64}}, N::Int)
     bootstrap_results = Dict{Tuple{Float64, Float64}, Dict{String, Float64}}()
+    medians = Float64[]
+    coords = Tuple{Float64, Float64}[]
+    sample_medians_map = Dict{Tuple{Float64, Float64}, Vector{Float64}}()
 
     for (coord, values) in data
-        means = Float32[]
-        medians = Float32[]
-
+        sample_medians = Float64[]
         for _ in 1:N
             sample = rand(values, length(values))
-            push!(means, mean(sample))
-            push!(medians, median(sample))
+            push!(sample_medians, median(sample))
         end
+        bootstrap_results[coord] = bootstrap_statistics(sample_medians)
+        sample_medians_map[coord] = sample_medians
+        push!(medians, bootstrap_results[coord]["median"])
+        push!(coords, coord)
+    end
 
-        mean_mean = mean(means)
-        median_median = median(medians)
-        std_mean = std(means)
-        std_median = std(medians)
+    # Calculate domain-wide median (null hypothesis)
+    domain_median = median(medians)
 
-        bootstrap_results[coord] = Dict(
-                                    "mean" => mean_mean,
-                                    "mean_1std" => std_mean,
-                                    "mean_2std" => 2 * std_mean,
-                                    "mean_1lc" => max(mean_mean - std_mean, 0),
-                                    "mean_1uc" => mean_mean + std_mean,
-                                    "mean_2lc" => max(mean_mean - 2 * std_mean, 0),
-                                    "mean_2uc" => mean_mean + 2 * std_mean,
-                                    "median" => median_median,
-                                    "median_1std" => std_median,
-                                    "median_2std" => 2 * std_median,
-                                    "median_1lc" => max(median_median - std_median, 0),
-                                    "median_1uc" => median_median + std_median,
-                                    "median_2lc" => max(median_median - 2 * std_median, 0),
-                                    "median_2uc" => median_median + 2 * std_median,
-        )
+    # Compute p-values using each cell's bootstrap median distribution
+    for coord in coords
+        r = bootstrap_results[coord]
+        samples = sample_medians_map[coord]
+
+        # proportion greater or equal to domain_median
+        prop_ge = sum(x -> x >= domain_median, samples) / length(samples)
+        prop_le = sum(x -> x <= domain_median, samples) / length(samples)
+        pval = 2.0 * min(prop_ge, prop_le) # two-sided p-value
+        pval = min(pval, 1.0)
+        r["p_value"] = pval
+        r["domain_median"] = domain_median
     end
 
     return bootstrap_results
