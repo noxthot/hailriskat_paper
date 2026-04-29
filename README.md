@@ -121,14 +121,19 @@ Pluto.run()
 This step is a bit hacky since it would make more sense to simply also use (1) directly; however, this was implemented faster.
 - Open `./models/mev_nn/1_mev_nn_fit_model_ensemble.jl` (Julia) and check `export data` to generate a data set for the goodness-of-fit tests.
 
+#### Compute statistical significances (4)
+- Run `./models/mev_nn/4_bootstrap_significance_test.jl` (Julia) to compute the results of the significance test.
+
 #### Generate figures used in the paper
-Prerequisites: Preprocessed data (1) and computed return levels (2) are available (see steps above).
+Prerequisites: Preprocessed data (1), computed return levels (2), computed gof tests (3), computed significance (4) are available (see steps above).
 - Figure 1 (qq plot; requires (3)): Run `./gof.R` (R).
-- Figure 6 (maximum observed hailstone size; requires (1)): Run notebook `./notebooks/hail_eda.ipynb` (Python) using Jupyter.
-- Figure 7 (hailstone size frequency; requires (1)): Run notebook `./notebooks/hail_eda.ipynb` (Python) using Jupyter.
-- Figure 8 (return levels of hailstone sizes as estimated by the TMEV approach using bootstrapping on the ensemble; requires (2)): Run notebook `./notebooks/mev_nn_plot_return_levels_ensemble.ipynb` (Python) using Jupyter.
-- Figure 9 (return periods of hailstone sizes as estimated by the TMEV approach using bootstrapping on the ensemble; requires (2)): Run notebook `./notebooks/mev_nn_plot_return_levels_ensemble.ipynb` (Python) using Jupyter.
-- Figure 10 (empirical hailstone size return levels; requires (1)): Run notebook `./notebooks/hail_eda.ipynb` (Python) using Jupyter.
+- Figure 5 (maximum observed hailstone size; requires (1)): Run notebook `./notebooks/hail_eda.ipynb` (Python) using Jupyter.
+- Figure 6 (hailstone size frequency; requires (1)): Run notebook `./notebooks/hail_eda.ipynb` (Python) using Jupyter.
+- Figure 7 (return levels of hailstone sizes as estimated by the TMEV approach using bootstrapping on the ensemble; requires (2)): Run notebook `./notebooks/mev_nn_plot_return_levels_ensemble.ipynb` (Python) using Jupyter.
+- Figure 8 (return periods of hailstone sizes as estimated by the TMEV approach using bootstrapping on the ensemble; requires (2)): Run notebook `./notebooks/mev_nn_plot_return_levels_ensemble.ipynb` (Python) using Jupyter.
+- Figure 9 (return level trends; requires (2)): Run notebook `./notebooks/hail_nn_plot_return_level_trends.ipynb` (Python) using Jupyter.
+- Figure 10 (significance plot; requires (4)): Run notebook `./notebooks/hail_nn_significance.ipynb` (Python) using Jupyter.
+- Figure 11 (empirical hailstone size return levels; requires (1)): Run notebook `./notebooks/hail_eda.ipynb` (Python) using Jupyter.
 - Figure A.1 (diagnostic plots using Weibull on raw data; requires (3)): Run `./gof.R` (R).
 - Figure A.2 (diagnostic plots using Weibull on dithered data; requires (3)): Run `./gof.R` (R). 
 - Figure B.2 (number of observed hail days; requires (3)): Run Notebook `./notebooks/hail_eda.ipynb` (Python) using Jupyter.
