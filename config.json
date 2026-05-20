@@ -1,0 +1,19 @@
+{
+  "paths": {
+    "data_root": "data",
+    "models": {
+      "mev_nn": {
+        "final_ensemble": "data/models/mev_nn/final_ensemble",
+        "results": "data/models/mev_nn/final_ensemble/results"
+      }
+    },
+    "raw_data": "data/raw_data",
+    "processed_data": "data/processed_data",
+    "significance_plots": "data/significance_plots",
+    "gof_data": "data/gof_data"
+  },
+  "output_directories": {
+    "current_results": "data/models/mev_nn/final_ensemble/results_output",
+    "bootstrap_null": "data/models/mev_nn/final_ensemble/results_bootstrap_null"
+  }
+}

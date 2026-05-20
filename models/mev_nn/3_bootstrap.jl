@@ -2,6 +2,8 @@ using CSV
 using DataFrames
 using Statistics
 
+include("../../utils/config.jl")
+
 
 function bootstrap_statistics(data::Vector{Float64})
     qs = [0.01, 0.05, 0.10, 0.25, 0.50, 0.75, 0.90, 0.95, 0.99]
@@ -121,14 +123,12 @@ function write_to_csv(bootstrap_results::Dict{Tuple{Float64, Float64}, Dict{Stri
     CSV.write(output_path, results_df)
 end
 
-ensemble_path = joinpath("data", "models", "mev_nn", "final_ensemble")
-output_dir = "results"
+ensemble_path = get_ensemble_path()
+output_path = get_output_dir("current_results")
 
 N_bootstrap = 1000
 rl_years = [10, 20, 30]
 hs_values = [3, 4, 5]
-
-output_path = joinpath(ensemble_path, output_dir)
 
 mkpath(output_path)
 
@@ -136,7 +136,7 @@ for rl_year in rl_years
     output_fp = joinpath(output_path, "bootstrap_results_$(rl_year).csv")
 
     @info "Retrieving data for $(rl_year) return level years"
-    data = retrieve_data(ensemble_path, "returns_y$(rl_year)_best_model.bson.csv", :target, output_dir)
+    data = retrieve_data(ensemble_path, "returns_y$(rl_year)_best_model.bson.csv", :target, basename(output_path))
 
     @info "Starting bootstrap analysis for $(rl_year) return level years"
     bootstrap_results = bootstrap(data, N_bootstrap)
@@ -150,7 +150,7 @@ for hs in hs_values
     output_fp = joinpath(output_path, "bootstrap_results_$(hs)cm.csv")
 
     @info "Retrieving data for $(hs)cm"
-    data = retrieve_data(ensemble_path, "returnperiod_$(hs)cm_best_model.bson.csv", :years, output_dir)
+    data = retrieve_data(ensemble_path, "returnperiod_$(hs)cm_best_model.bson.csv", :years, basename(output_path))
 
     @info "Starting bootstrap analysis for $(hs)cm"
     bootstrap_results = bootstrap(data, N_bootstrap)

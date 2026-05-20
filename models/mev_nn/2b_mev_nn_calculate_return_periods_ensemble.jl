@@ -35,6 +35,8 @@ begin
 	using Serialization
 	using StatsBase
 	using Unitful
+
+	include("../../utils/config.jl")
 end
 
 # ╔═╡ bb2709f4-3e59-4e8e-b0ea-7cdea100a7f2
@@ -45,7 +47,7 @@ function scaledata(df, fitted_transform)
 end
 
 # ╔═╡ 844901f1-2e52-4860-89f6-38eab3ef4277
-path_processed = joinpath("..", "..", "data", "models", "mev_nn", "final_ensemble")
+path_processed = get_ensemble_path()
 
 # ╔═╡ be525da3-5ae5-4156-8ef6-2a81ae40cb59
 md"""

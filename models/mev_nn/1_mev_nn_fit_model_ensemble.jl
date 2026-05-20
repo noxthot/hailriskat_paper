@@ -35,6 +35,8 @@ begin
 	using SpecialFunctions
 	using StatsBase
 	using StatsPlots
+
+	include("../../utils/config.jl")
 end
 
 # ╔═╡ 5ad3233f-bfaa-46aa-8a0d-4225af637b4e
@@ -58,8 +60,7 @@ begin
 
 	SHOW_PLOTS = false
 
-	DATA_PATH = joinpath("..", "..", "data")
-    SAVE_PATH = joinpath(DATA_PATH, "models", "mev_nn", "final_ensemble")
+    SAVE_PATH = get_ensemble_path()
 end;
 
 # ╔═╡ f1fcced2-f2d5-4b76-8ec4-be1c0cd39dae
@@ -81,9 +82,9 @@ end;
 
 # ╔═╡ 8e5ef128-405a-4220-bb35-fd2077ee8eb2
 begin
-	path_processed = joinpath(DATA_PATH, "processed_data")
+	path_processed = get_path("processed_data")
 
-	local choices = filter(startswith("dataparquet"), readdir(joinpath(path_processed)))
+	local choices = filter(startswith("dataparquet"), readdir(path_processed))
 	sort!(choices, rev=true)
 
 	@bind data_dir Select(choices)
@@ -205,7 +206,7 @@ end
 
 # ╔═╡ f89212ef-d632-47ea-a5e6-a1e2bb94fc76
 if export_data
-	local output_path = joinpath(DATA_PATH, "gof_data")
+	local output_path = get_path("gof_data")
 	local loc_columns = [:x, :y]
 	local df_full = df_raw[:, vcat(loc_columns, [:lat, :lon])]
 

@@ -1,9 +1,11 @@
 #%%
 library("fitdistrplus")
 
+# Load configuration
+source("utils/config.R")
 
 #%%
-data_path <- file.path("data", "gof_data")
+data_path <- get_path('gof_data')
 data_full <- read.csv(file.path(data_path, "data_full.csv"))
 
 output_folder <- file.path(data_path, "gof_results")

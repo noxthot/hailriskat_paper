@@ -18,11 +18,12 @@ from tqdm import tqdm
 import ccc
 
 import utils
+from utils.config import get_path, get_data_root
 
-PATH_DATA = os.path.join(".", "data")
-PATH_DATA_SOURCE = os.path.join(PATH_DATA, "raw_data")
+PATH_DATA = get_data_root()
+PATH_DATA_SOURCE = get_path("raw_data")
 
-PATH_DATA_PROCESSED = os.path.join(PATH_DATA, "processed_data")
+PATH_DATA_PROCESSED = get_path("processed_data")
 PATH_DATA_TARGET = os.path.join(
     PATH_DATA_PROCESSED, 
     "dataparquet_" + datetime.date.today().strftime("%Y_%m_%d")

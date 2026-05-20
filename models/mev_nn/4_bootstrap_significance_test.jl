@@ -3,6 +3,8 @@ using DataFrames
 using MultipleTesting
 using Statistics
 
+include("../../utils/config.jl")
+
 
 function retrieve_data(ensemble_path::String, csv_filename::String, target_col_name::Symbol, ignore_dir::String)
     data = Dict{Tuple{Float64, Float64}, Vector{Float64}}()
@@ -113,17 +115,17 @@ end
 
 
 
-ensemble_path = joinpath("data", "models", "mev_nn", "final_ensemble")
-output_dir = "results_bootstrap_null"
-mkpath(joinpath(ensemble_path, output_dir))
+ensemble_path = get_ensemble_path()
+output_path = get_output_dir("bootstrap_null")
+mkpath(output_path)
 
 rl_years = [10, 20, 30]
 
 for rl_year in rl_years
-    output_fp = joinpath(ensemble_path, output_dir, "null_test_y$(rl_year).csv")
+    output_fp = joinpath(output_path, "null_test_y$(rl_year).csv")
 
     @info "Processing Return Level: $rl_year"
-    data = retrieve_data(ensemble_path, "returns_y$(rl_year)_best_model.bson.csv", :target, output_dir)
+    data = retrieve_data(ensemble_path, "returns_y$(rl_year)_best_model.bson.csv", :target, basename(output_path))
 
     results = bootstrap_null_test(data, 1000)
     write_to_csv(results, output_fp)
